@@ -21,7 +21,7 @@ const MainRoutes = {
     children: [
         {
             path: '/',
-            element: <Dashboard/>
+            element: <Dashboard />
         },
         {
             path: '/sample-page',
@@ -29,8 +29,8 @@ const MainRoutes = {
         },
         {
             path: '/dashboard',
-            element: <Dashboard/>
-        },
+            element: <Dashboard />
+        }
     ]
 };
 

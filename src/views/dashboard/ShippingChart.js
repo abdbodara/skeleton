@@ -1,28 +1,31 @@
-import React from "react";
-import ReactApexChart from "react-apexcharts";
+import React from 'react';
+import ReactApexChart from 'react-apexcharts';
 
 class ShippingChart extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-
-            series: [{
-                name: 'Exworks',
-                data: [76]
-            }, {
-                name: 'Eco Friendly',
-                data: [40]
-            }, {
-                name: 'Express',
-                data: [44]
-            }],
+            series: [
+                {
+                    name: 'Exworks',
+                    data: [76]
+                },
+                {
+                    name: 'Eco Friendly',
+                    data: [40]
+                },
+                {
+                    name: 'Express',
+                    data: [44]
+                }
+            ],
             options: {
                 chart: {
                     type: 'bar',
                     height: 200,
-                    toolbar:{
-                        show:false,
+                    toolbar: {
+                        show: false
                     }
                 },
                 plotOptions: {
@@ -30,7 +33,7 @@ class ShippingChart extends React.Component {
                         horizontal: false,
                         columnWidth: '30%',
                         endingShape: 'rounded'
-                    },
+                    }
                 },
                 dataLabels: {
                     enabled: false
@@ -41,33 +44,33 @@ class ShippingChart extends React.Component {
                     colors: ['transparent']
                 },
                 stroke: {
-                    colors: ["transparent"],
+                    colors: ['transparent'],
                     width: 20
-                  },
-                colors:["#673AB7", "#00C853", "#2196F3"],
+                },
+                colors: ['#673AB7', '#00C853', '#2196F3'],
                 xaxis: {
                     categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
                     axisTicks: {
-                        show: false,
+                        show: false
                     },
                     axisBorder: {
-                        show: false,
+                        show: false
                     }
                 },
                 grid: {
                     show: false,
                     row: {
                         color: ['transparent'],
-                        opacity: 0,
-                    },
+                        opacity: 0
+                    }
                 },
                 yaxis: {
                     title: {
                         text: '$ (thousands)'
                     },
-                    show:false,
-                    labels:{
-                        show:false
+                    show: false,
+                    labels: {
+                        show: false
                     }
                 },
                 fill: {
@@ -76,17 +79,24 @@ class ShippingChart extends React.Component {
                 tooltip: {
                     y: {
                         formatter: function (val) {
-                            return "$ " + val + " thousands"
+                            return '$ ' + val + ' thousands';
                         }
                     }
-                }
-            },
-
-
+                },
+                responsive: [
+                    {
+                        breakpoint: 991,
+                        options: {
+                            stroke: {
+                                colors: ['transparent'],
+                                width: 10
+                            }
+                        }
+                    }
+                ]
+            }
         };
     }
-
-
 
     render() {
         return (
@@ -97,5 +107,4 @@ class ShippingChart extends React.Component {
     }
 }
 
-
-export default ShippingChart
+export default ShippingChart;

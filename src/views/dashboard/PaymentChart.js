@@ -2,13 +2,13 @@ import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 import data from '../../dashboardData.json';
 
-class StatusChart extends React.Component {
+class PaymentChart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            series: data.statuschart.statuschartseries,
+            series: data.paymentchart.paymentchartSeries,
             options: {
-                labels: data.statuschart.status,
+                labels: data.paymentchart.status,
                 chart: {
                     type: 'donut',
                     width: '100%'
@@ -37,4 +37,4 @@ class StatusChart extends React.Component {
     }
 }
 
-export default StatusChart;
+export default PaymentChart;

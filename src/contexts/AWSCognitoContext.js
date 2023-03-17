@@ -24,7 +24,7 @@ export const userPool = new CognitoUserPool({
     ClientId: AWS_API.appClientId || ''
 });
 
-const setSession = (serviceToken? | null) => {
+const setSession = (serviceToken | null) => {
     if (serviceToken) {
         localStorage.setItem('serviceToken', serviceToken);
     } else {

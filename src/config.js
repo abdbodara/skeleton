@@ -12,7 +12,7 @@ export const FIREBASE_API = {
 // like '/berry-material-react/react/default'
 export const BASE_PATH = '';
 
-export const DASHBOARD_PATH = '/sample-page';
+export const DASHBOARD_PATH = '/dashboard';
 
 const config = {
     fontFamily: `'Roboto', sans-serif`,

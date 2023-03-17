@@ -1,54 +1,55 @@
-import React from "react";
-import ReactApexChart from "react-apexcharts";
-
+import React from 'react';
+import ReactApexChart from 'react-apexcharts';
+import _ from 'lodash';
+import data from '../../dashboardData.json';
+import moment from 'moment';
 
 class OrderChart extends React.Component {
     constructor(props) {
+        const results = data.orders.map((o) => moment(o.order_date).format('MMM'));
         super(props);
-
         this.state = {
-            series: [{
-                name: 'series1',
-                data: [31, 80, 100, 80, 60, 109, 90, 50, 89, 100, 54, 78]
-            }],
+            series: [
+                {
+                    name: 'series1',
+                    data: [31, 80, 100, 80, 60, 109, 90, 50, 89, 100, 54, 78]
+                }
+            ],
             options: {
                 chart: {
                     height: 300,
                     type: 'area',
                     toolbar: {
-                        show: false,
+                        show: false
                     }
                 },
                 dataLabels: {
                     enabled: false
                 },
-                stroke: {
-                    curve: 'smooth'
-                },
                 grid: {
                     show: false,
                     row: {
                         color: ['transparent'],
-                        opacity: 0,
+                        opacity: 0
                     },
-                    padding:{bottom:-10,left:8,right:0}
+                    padding: { bottom: -10, left: 8, right: 0 }
                 },
                 colors: ['#00C853'],
                 xaxis: {
-                    show:false,
+                    show: false,
                     type: 'month',
-                    categories: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    categories: results,
                     axisTicks: {
-                        show: false,
+                        show: false
                     },
                     axisBorder: {
-                        show: false,
+                        show: false
                     }
                 },
-                yaxis:{
-                    show:false,
-                    labels:{
-                        show:false
+                yaxis: {
+                    show: false,
+                    labels: {
+                        show: false
                     }
                 },
                 stroke: {
@@ -57,17 +58,16 @@ class OrderChart extends React.Component {
                     lineCap: 'butt',
                     colors: undefined,
                     width: 2,
-                    dashArray: 0,      
-                },                
+                    dashArray: 0
+                },
                 tooltip: {
                     x: {
                         format: 'dd/MM/yy HH:mm'
-                    },
-                },
-            },
+                    }
+                }
+            }
         };
     }
-
     render() {
         return (
             <div id="chart">
@@ -77,5 +77,4 @@ class OrderChart extends React.Component {
     }
 }
 
-
-export default OrderChart
+export default OrderChart;
