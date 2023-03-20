@@ -1,14 +1,22 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 import data from '../../dashboardData.json';
+import orders from '../../OrdersDummyData.json'
+import _ from 'lodash'
 
 class PaymentChart extends React.Component {
     constructor(props) {
+        let orderStatus,price;
+        const results = orders.data.map(o => o.paymentStatus).map((item)=>{
+            orderStatus = _.groupBy(item,'displayName')
+        })
+       
+        
         super(props);
         this.state = {
-            series: data.paymentchart.paymentchartSeries,
+            series: [96, 85, 41],
             options: {
-                labels: data.paymentchart.status,
+                labels: [Object.keys(orderStatus) , "Completed", "Processing"],
                 chart: {
                     type: 'donut',
                     width: '100%'

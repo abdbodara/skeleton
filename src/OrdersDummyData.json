@@ -1,0 +1,552 @@
+{
+  "data": [
+    {
+      "internalId": "PX 1001",
+      "externalId": "",
+      "purchaseOrderNumber": "4509973113",
+      "organization": {
+        "organizationId": "640225383934aae9778c5abd",
+        "organizationName": "JABIL"
+      },
+      "status": [
+        {
+          "updatedAt": "2023-03-17T17:23:15.793Z",
+          "updatedBy": "638268a3c0f042744a277ebd",
+          "id": "28a2741c-30cf-419b-83b2-fc73c52e295b",
+          "displayName": "Draft"
+        },
+        {
+          "updatedAt": "2023-03-17T17:23:36.067Z",
+          "updatedBy": "638268a3c0f042744a277ebd",
+          "id": "29d8610d-53f1-418f-b92c-26f8523c15ab",
+          "displayName": "Ready To Ship"
+        }
+      ],
+      "lineItems": [
+        {
+          "productId": "64135960524fe0456f70c00b",
+          "externalId": "",
+          "title": "W10464431",
+          "totalDimensions": 0,
+          "totalWeight": 0,
+          "sku": "W10464431",
+          "upc": "",
+          "rfidCode": "",
+          "quantity": 5250
+        }
+      ],
+      "shippingInformation": {
+        "shippingInformationId": "dd89b9be-84d8-4766-9eb0-70f46e9b5d18",
+        "externalId": "",
+        "address": {
+          "address1": "Av Valdepeñas 1993",
+          "address2": "Col. Lomas De Zapopan, Aeropuerto Intl. Guadalajara",
+          "city": "Zapopan",
+          "state": "Jalisco",
+          "country": "México",
+          "zipCode": "45130",
+          "references": "",
+          "province": "",
+          "location": {
+            "latitude": "",
+            "longitude": ""
+          },
+          "countryCodeISO3": "",
+          "countryCode": "",
+          "completeAddress": ""
+        },
+        "contact": {
+          "firstName": "Hermann",
+          "lastName": "González",
+          "department": "",
+          "email": "HERMANN_GONZALEZ@JABIL.COM",
+          "phone": "523338191300"
+        }
+      },
+      "billingInformation": {
+        "billingInformationId": "0e6b3544-6b64-4ecc-9a64-c59f511423a6",
+        "externalId": "",
+        "address": {
+          "address1": "Avenida Valdepeñas No. 1993",
+          "address2": "Colonia Lomas de Zapopan",
+          "city": "Zapopan",
+          "state": "Jalisco",
+          "country": "México",
+          "zipCode": "45130",
+          "references": "",
+          "province": "",
+          "location": {
+            "latitude": "",
+            "longitude": ""
+          },
+          "countryCodeISO3": "",
+          "countryCode": "",
+          "completeAddress": ""
+        },
+        "contact": {
+          "firstName": "Hermann",
+          "lastName": "González",
+          "department": "",
+          "email": "HERMANN_GONZALEZ@JABIL.COM",
+          "phone": "523338191300"
+        }
+      },
+      "shippingMethod": {
+        "shippingMethodId": "641366587973ed786f35d00d",
+        "displayName": "Exworks",
+        "price": 2000,
+        "incrementPercentage": 0
+      },
+      "paymentMethod": {
+        "paymentMethodId": "64023c09e47b5a497048dad8",
+        "name": "Bank Transfer",
+        "bankAccount": "89089 98080 09809 8708"
+      },
+      "paymentStatus": [
+        {
+          "paymentStatusId": "822fca22-64e5-49da-8d76-9a124b636d6d",
+          "displayName": "Pending Payment",
+          "createdBy": "638268a3c0f042744a277ebd",
+          "createdAt": "2023-03-17T17:23:36.067Z"
+        }
+      ],
+      "integrationId": null,
+      "originWarehouseId": "63ee5933345464de067d680c",
+      "plannedShippingDay": "2023-02-13T17:54:43.454Z",
+      "packingSlip": {
+        "packingSlipId": "",
+        "isTrue": false
+      },
+      "shippingLabel": null,
+      "poFile": null,
+      "term": {
+        "termId": "640b6ecc056ba0b623ee6884",
+        "name": "Net 15",
+        "netDays": 15,
+        "discount": {
+          "percentage": 10,
+          "days": 5
+        }
+      },
+      "subtotal": 1000,
+      "tax": 160,
+      "total": 1160,
+      "domainEvents": null,
+      "id": "6414a2161b4ceec97cececad",
+      "createdAt": "2023-03-17T17:23:36.069Z",
+      "updatedAt": "2023-03-17T17:23:36.069Z"
+    },
+    {
+      "internalId": "PX 1002",
+      "externalId": "",
+      "purchaseOrderNumber": "4510070724",
+      "organization": {
+        "organizationId": "640225383934aae9778c5abd",
+        "organizationName": "JABIL"
+      },
+      "status": [
+        {
+          "updatedAt": "2023-03-17T17:31:35.257Z",
+          "updatedBy": "638268a3c0f042744a277ebd",
+          "id": "28a2741c-30cf-419b-83b2-fc73c52e295b",
+          "displayName": "Draft"
+        },
+        {
+          "updatedAt": "2023-03-17T17:31:50.686Z",
+          "updatedBy": "638268a3c0f042744a277ebd",
+          "id": "29d8610d-53f1-418f-b92c-26f8523c15ab",
+          "displayName": "Ready To Ship"
+        }
+      ],
+      "lineItems": [
+        {
+          "productId": "64135960524fe0456f70c00b",
+          "externalId": "",
+          "title": "W10444969",
+          "totalDimensions": 0,
+          "totalWeight": 0,
+          "sku": "W10444969",
+          "upc": "",
+          "rfidCode": "",
+          "quantity": 8064
+        }
+      ],
+      "shippingInformation": {
+        "shippingInformationId": "dd89b9be-84d8-4766-9eb0-70f46e9b5d18",
+        "externalId": "",
+        "address": {
+          "address1": "Av Valdepeñas 1993",
+          "address2": "Col. Lomas De Zapopan, Aeropuerto Intl. Guadalajara",
+          "city": "Zapopan",
+          "state": "Jalisco",
+          "country": "México",
+          "zipCode": "45130",
+          "references": "",
+          "province": "",
+          "location": {
+            "latitude": "",
+            "longitude": ""
+          },
+          "countryCodeISO3": "",
+          "countryCode": "",
+          "completeAddress": ""
+        },
+        "contact": {
+          "firstName": "Hermann",
+          "lastName": "González",
+          "department": "",
+          "email": "HERMANN_GONZALEZ@JABIL.COM",
+          "phone": "523338191300"
+        }
+      },
+      "billingInformation": {
+        "billingInformationId": "0e6b3544-6b64-4ecc-9a64-c59f511423a6",
+        "externalId": "",
+        "address": {
+          "address1": "Avenida Valdepeñas No. 1993",
+          "address2": "Colonia Lomas de Zapopan",
+          "city": "Zapopan",
+          "state": "Jalisco",
+          "country": "México",
+          "zipCode": "45130",
+          "references": "",
+          "province": "",
+          "location": {
+            "latitude": "",
+            "longitude": ""
+          },
+          "countryCodeISO3": "",
+          "countryCode": "",
+          "completeAddress": ""
+        },
+        "contact": {
+          "firstName": "Hermann",
+          "lastName": "González",
+          "department": "",
+          "email": "HERMANN_GONZALEZ@JABIL.COM",
+          "phone": "523338191300"
+        }
+      },
+      "shippingMethod": {
+        "shippingMethodId": "641366587973ed786f35d00d",
+        "displayName": "Exworks",
+        "price": 2000,
+        "incrementPercentage": 0
+      },
+      "paymentMethod": {
+        "paymentMethodId": "64023c09e47b5a497048dad8",
+        "name": "Bank Transfer",
+        "bankAccount": "89089 98080 09809 8708"
+      },
+      "paymentStatus": [
+        {
+          "paymentStatusId": "822fca22-64e5-49da-8d76-9a124b636d6d",
+          "displayName": "Pending Payment",
+          "createdBy": "638268a3c0f042744a277ebd",
+          "createdAt": "2023-03-17T17:31:50.686Z"
+        }
+      ],
+      "integrationId": null,
+      "originWarehouseId": "63ee5933345464de067d680c",
+      "plannedShippingDay": "2023-03-30T17:54:43.454Z",
+      "packingSlip": {
+        "packingSlipId": "",
+        "isTrue": false
+      },
+      "shippingLabel": null,
+      "poFile": null,
+      "term": {
+        "termId": "640b6ecc056ba0b623ee6884",
+        "name": "Net 15",
+        "netDays": 15,
+        "discount": {
+          "percentage": 10,
+          "days": 5
+        }
+      },
+      "subtotal": 2000,
+      "tax": 320,
+      "total": 2320,
+      "domainEvents": null,
+      "id": "6414a405a76d5c42fd351c93",
+      "createdAt": "2023-03-17T17:31:50.687Z",
+      "updatedAt": "2023-03-17T17:31:50.687Z"
+    },
+    {
+      "internalId": "PX 1003",
+      "externalId": "",
+      "purchaseOrderNumber": "4510196533",
+      "organization": {
+        "organizationId": "640225383934aae9778c5abd",
+        "organizationName": "JABIL"
+      },
+      "status": [
+        {
+          "updatedAt": "2023-03-17T17:40:33.019Z",
+          "updatedBy": "638268a3c0f042744a277ebd",
+          "id": "28a2741c-30cf-419b-83b2-fc73c52e295b",
+          "displayName": "Draft"
+        },
+        {
+          "updatedAt": "2023-03-17T17:40:42.825Z",
+          "updatedBy": "638268a3c0f042744a277ebd",
+          "id": "29d8610d-53f1-418f-b92c-26f8523c15ab",
+          "displayName": "Ready To Ship"
+        }
+      ],
+      "lineItems": [
+        {
+          "productId": "64135960524fe0456f70c00b",
+          "externalId": "",
+          "title": "W10464431",
+          "totalDimensions": 0,
+          "totalWeight": 0,
+          "sku": "W10464431",
+          "upc": "",
+          "rfidCode": "",
+          "quantity": 4500
+        }
+      ],
+      "shippingInformation": {
+        "shippingInformationId": "dd89b9be-84d8-4766-9eb0-70f46e9b5d18",
+        "externalId": "",
+        "address": {
+          "address1": "Av Valdepeñas 1993",
+          "address2": "Col. Lomas De Zapopan, Aeropuerto Intl. Guadalajara",
+          "city": "Zapopan",
+          "state": "Jalisco",
+          "country": "México",
+          "zipCode": "45130",
+          "references": "",
+          "province": "",
+          "location": {
+            "latitude": "",
+            "longitude": ""
+          },
+          "countryCodeISO3": "",
+          "countryCode": "",
+          "completeAddress": ""
+        },
+        "contact": {
+          "firstName": "Hermann",
+          "lastName": "González",
+          "department": "",
+          "email": "HERMANN_GONZALEZ@JABIL.COM",
+          "phone": "523338191300"
+        }
+      },
+      "billingInformation": {
+        "billingInformationId": "0e6b3544-6b64-4ecc-9a64-c59f511423a6",
+        "externalId": "",
+        "address": {
+          "address1": "Avenida Valdepeñas No. 1993",
+          "address2": "Colonia Lomas de Zapopan",
+          "city": "Zapopan",
+          "state": "Jalisco",
+          "country": "México",
+          "zipCode": "45130",
+          "references": "",
+          "province": "",
+          "location": {
+            "latitude": "",
+            "longitude": ""
+          },
+          "countryCodeISO3": "",
+          "countryCode": "",
+          "completeAddress": ""
+        },
+        "contact": {
+          "firstName": "Hermann",
+          "lastName": "González",
+          "department": "",
+          "email": "HERMANN_GONZALEZ@JABIL.COM",
+          "phone": "523338191300"
+        }
+      },
+      "shippingMethod": {
+        "shippingMethodId": "641366587973ed786f35d00d",
+        "displayName": "Exworks",
+        "price": 2000,
+        "incrementPercentage": 0
+      },
+      "paymentMethod": {
+        "paymentMethodId": "64023c09e47b5a497048dad8",
+        "name": "Bank Transfer",
+        "bankAccount": "89089 98080 09809 8708"
+      },
+      "paymentStatus": [
+        {
+          "paymentStatusId": "822fca22-64e5-49da-8d76-9a124b636d6d",
+          "displayName": "Pending Payment",
+          "createdBy": "638268a3c0f042744a277ebd",
+          "createdAt": "2023-03-17T17:40:42.825Z"
+        }
+      ],
+      "integrationId": null,
+      "originWarehouseId": "63ee5933345464de067d680c",
+      "plannedShippingDay": "2023-03-30T17:54:43.454Z",
+      "packingSlip": {
+        "packingSlipId": "",
+        "isTrue": false
+      },
+      "shippingLabel": null,
+      "poFile": null,
+      "term": {
+        "termId": "640b6ecc056ba0b623ee6884",
+        "name": "Net 15",
+        "netDays": 15,
+        "discount": {
+          "percentage": 10,
+          "days": 5
+        }
+      },
+      "subtotal": 3000,
+      "tax": 480,
+      "total": 3480,
+      "domainEvents": null,
+      "id": "6414a61aa76d5c42fd351c96",
+      "createdAt": "2023-03-17T17:40:42.825Z",
+      "updatedAt": "2023-03-17T17:40:42.825Z"
+    },
+    {
+      "internalId": "PX 1004",
+      "externalId": "",
+      "purchaseOrderNumber": "4510220992",
+      "organization": {
+        "organizationId": "640225383934aae9778c5abd",
+        "organizationName": "JABIL"
+      },
+      "status": [
+        {
+          "updatedAt": "2023-03-17T17:43:44.29Z",
+          "updatedBy": "638268a3c0f042744a277ebd",
+          "id": "28a2741c-30cf-419b-83b2-fc73c52e295b",
+          "displayName": "Draft"
+        },
+        {
+          "updatedAt": "2023-03-17T17:43:56.433Z",
+          "updatedBy": "638268a3c0f042744a277ebd",
+          "id": "29d8610d-53f1-418f-b92c-26f8523c15ab",
+          "displayName": "Ready To Ship"
+        }
+      ],
+      "lineItems": [
+        {
+          "productId": "64135960524fe0456f70c00b",
+          "externalId": "",
+          "title": "W10464431",
+          "totalDimensions": 0,
+          "totalWeight": 0,
+          "sku": "W10464431",
+          "upc": "",
+          "rfidCode": "",
+          "quantity": 8109
+        }
+      ],
+      "shippingInformation": {
+        "shippingInformationId": "dd89b9be-84d8-4766-9eb0-70f46e9b5d18",
+        "externalId": "",
+        "address": {
+          "address1": "Av Valdepeñas 1993",
+          "address2": "Col. Lomas De Zapopan, Aeropuerto Intl. Guadalajara",
+          "city": "Zapopan",
+          "state": "Jalisco",
+          "country": "México",
+          "zipCode": "45130",
+          "references": "",
+          "province": "",
+          "location": {
+            "latitude": "",
+            "longitude": ""
+          },
+          "countryCodeISO3": "",
+          "countryCode": "",
+          "completeAddress": ""
+        },
+        "contact": {
+          "firstName": "Hermann",
+          "lastName": "González",
+          "department": "",
+          "email": "HERMANN_GONZALEZ@JABIL.COM",
+          "phone": "523338191300"
+        }
+      },
+      "billingInformation": {
+        "billingInformationId": "0e6b3544-6b64-4ecc-9a64-c59f511423a6",
+        "externalId": "",
+        "address": {
+          "address1": "Avenida Valdepeñas No. 1993",
+          "address2": "Colonia Lomas de Zapopan",
+          "city": "Zapopan",
+          "state": "Jalisco",
+          "country": "México",
+          "zipCode": "45130",
+          "references": "",
+          "province": "",
+          "location": {
+            "latitude": "",
+            "longitude": ""
+          },
+          "countryCodeISO3": "",
+          "countryCode": "",
+          "completeAddress": ""
+        },
+        "contact": {
+          "firstName": "Hermann",
+          "lastName": "González",
+          "department": "",
+          "email": "HERMANN_GONZALEZ@JABIL.COM",
+          "phone": "523338191300"
+        }
+      },
+      "shippingMethod": {
+        "shippingMethodId": "641366587973ed786f35d00d",
+        "displayName": "Exworks",
+        "price": 2000,
+        "incrementPercentage": 0
+      },
+      "paymentMethod": {
+        "paymentMethodId": "64023c09e47b5a497048dad8",
+        "name": "Bank Transfer",
+        "bankAccount": "89089 98080 09809 8708"
+      },
+      "paymentStatus": [
+        {
+          "paymentStatusId": "822fca22-64e5-49da-8d76-9a124b636d6d",
+          "displayName": "Pending Payment",
+          "createdBy": "638268a3c0f042744a277ebd",
+          "createdAt": "2023-03-17T17:43:56.433Z"
+        }
+      ],
+      "integrationId": null,
+      "originWarehouseId": "63ee5933345464de067d680c",
+      "plannedShippingDay": "2023-02-23T17:54:43.454Z",
+      "packingSlip": {
+        "packingSlipId": "",
+        "isTrue": false
+      },
+      "shippingLabel": null,
+      "poFile": null,
+      "term": {
+        "termId": "640b6ecc056ba0b623ee6884",
+        "name": "Net 15",
+        "netDays": 15,
+        "discount": {
+          "percentage": 10,
+          "days": 5
+        }
+      },
+      "subtotal": 4000,
+      "tax": 540,
+      "total": 4540,
+      "domainEvents": null,
+      "id": "6414a6dbc2214153e593c5ee",
+      "createdAt": "2023-03-17T17:43:56.434Z",
+      "updatedAt": "2023-03-17T17:43:56.434Z"
+    }
+  ],
+  "page": 1,
+  "totalPages": 1,
+  "hasNextPage": false,
+  "hasPrevPage": false
+}

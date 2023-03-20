@@ -3,16 +3,25 @@ import ReactApexChart from 'react-apexcharts';
 import _ from 'lodash';
 import data from '../../dashboardData.json';
 import moment from 'moment';
+import orders from '../../OrdersDummyData.json'
 
 class OrderChart extends React.Component {
     constructor(props) {
+        let pid;
         const results = data.orders.map((o) => moment(o.order_date).format('MMM'));
+        const orders1 = orders.data.map((item)=>item.lineItems)
+        orders1.map((item)=>{
+           item.map((itema)=>{
+            pid = itema.quantity
+
+          })
+        })
         super(props);
         this.state = {
             series: [
                 {
                     name: 'series1',
-                    data: [31, 80, 100, 80, 60, 109, 90, 50, 89, 100, 54, 78]
+                    data: [pid, 8064, 8000, 8034, 6078, 5033, 3030, 4033, 6333, 2323, 7809,9505]
                 }
             ],
             options: {

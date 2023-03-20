@@ -1,23 +1,26 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
+import orders from '../../OrdersDummyData.json'
+import _ from 'lodash'
 
 class ShippingChart extends React.Component {
     constructor(props) {
+        const results = orders.data.map(o=>o.shippingMethod)
         super(props);
 
         this.state = {
             series: [
                 {
-                    name: 'Exworks',
-                    data: [76]
+                    name: Object.keys(_.groupBy(results,'displayName')),
+                    data: Object.keys(_.groupBy(results,'price'))
                 },
                 {
                     name: 'Eco Friendly',
-                    data: [40]
+                    data: [1500]
                 },
                 {
                     name: 'Express',
-                    data: [44]
+                    data: [300]
                 }
             ],
             options: {

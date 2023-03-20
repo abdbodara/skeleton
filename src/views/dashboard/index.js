@@ -16,22 +16,19 @@ import StatusChart from './StatusChart';
 import ShippingChart from './ShippingChart';
 import OrderProductChart from './OrderProductChart';
 import data from '../../dashboardData.json';
+import orders from '../../OrdersDummyData.json'
 import PaymentChart from './PaymentChart';
 
 export default function Dashboard() {
     // const [open, setOpen] = React.useState(false);
     // const handleOpen = () => setOpen(true);
     // const handleClose = () => setOpen(false);
-    let results = data.orders.map((o) => o.status);
-    const resultddddd = _.groupBy(data.orders, 'status');
-    console.log('🚀 ~ file: index.js:28 ~ Dashboard ~ resultddddd:');
+    console.log('🚀 ~ file: index.js:28 ~ Dashboard ~ resultddddd:',orders.data);
     // const cats = data.orders.reduce((catsSoFar, { category, title }) => {
     //     if (!catsSoFar[category]) catsSoFar[category] = [];
     //     catsSoFar[category].push(title);
     //     return catsSoFar;
     //   }, {});
-    console.log('🚀 ~ file: index.js:26 ~ Dashboard ~ results:', _.groupBy(results));
-
     return (
         <DashboardStyle>
             <Box className="main-dashboard">
@@ -55,7 +52,7 @@ export default function Dashboard() {
                             <WalletIcon />
                         </Box>
                         <Box className="text">
-                            <Typography variant="h4">${data.orders.reduce((total, item) => total + item.total, 0).toFixed(2)}</Typography>
+                            <Typography variant="h4">${orders.data.reduce((total, item) => total + item.total, 0).toFixed(2)}</Typography>
                             <Typography variant="h6">
                                 Total <Box>spent</Box>
                             </Typography>
@@ -66,7 +63,7 @@ export default function Dashboard() {
                             <CartIcon />
                         </Box>
                         <Box className="text">
-                            <Typography variant="h4">{data.orders.length}</Typography>
+                            <Typography variant="h4">{orders.data.length}</Typography>
                             <Typography variant="h6">
                                 Total <Box>Orders</Box>
                             </Typography>
@@ -174,16 +171,16 @@ export default function Dashboard() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {data.orders
-                                        .filter((item) => item.status === 'Completed')
+                                    {orders.data
                                         .map((item) => {
                                             return (
                                                 <tr>
-                                                    <td>{item.order_id}</td>
-                                                    <td>{item.po}</td>
-                                                    <td>{moment(item.order_date).format('DD.MM.YYYY')}</td>
+                                                    <td>{item.internalId}</td>
+                                                    <td>#{item.purchaseOrderNumber}</td>
+                                                    <td>{moment(item.createdAt).format('DD.MM.YYYY')}</td>
                                                     <td>${item.total}</td>
-                                                    <td>{item.deliverymethod}</td>
+                                                    <td>{item.shippingMethod.displayName
+}</td>
                                                     <td>
                                                         <ViewIcon />
                                                     </td>
