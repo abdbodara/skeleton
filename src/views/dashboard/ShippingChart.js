@@ -58,7 +58,10 @@ class ShippingChart extends React.Component {
                     },
                     axisBorder: {
                         show: false
-                    }
+                    },
+                    crosshairs: {
+                        show: false
+                      },
                 },
                 grid: {
                     show: false,

@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts';
 import _ from 'lodash';
 import data from '../../dashboardData.json';
 import moment from 'moment';
-import orders from '../../OrdersDummyData.json'
+import orders from '../../OrdersDummyData.json';
 
 class OrderChart extends React.Component {
     constructor(props) {
