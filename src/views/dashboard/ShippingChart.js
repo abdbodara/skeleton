@@ -5,14 +5,14 @@ import _ from 'lodash'
 
 class ShippingChart extends React.Component {
     constructor(props) {
-        const results = orders.data.map(o=>o.shippingMethod)
+        const results = orders.data.map(o => o.shippingMethod)
         super(props);
 
         this.state = {
             series: [
                 {
-                    name: Object.keys(_.groupBy(results,'displayName')),
-                    data: Object.keys(_.groupBy(results,'price'))
+                    name: Object.keys(_.groupBy(results, 'displayName')),
+                    data: Object.keys(_.groupBy(results, 'price'))
                 },
                 {
                     name: 'Eco Friendly',
@@ -26,7 +26,7 @@ class ShippingChart extends React.Component {
             options: {
                 chart: {
                     type: 'bar',
-                    height: 200,
+                    height: '100%',
                     toolbar: {
                         show: false
                     }
@@ -61,14 +61,15 @@ class ShippingChart extends React.Component {
                     },
                     crosshairs: {
                         show: false
-                      },
+                    },
                 },
                 grid: {
                     show: false,
                     row: {
                         color: ['transparent'],
                         opacity: 0
-                    }
+                    },
+
                 },
                 yaxis: {
                     title: {
@@ -91,13 +92,61 @@ class ShippingChart extends React.Component {
                 },
                 responsive: [
                     {
-                        breakpoint: 991,
+
+                        breakpoint: 1400,
                         options: {
                             stroke: {
                                 colors: ['transparent'],
                                 width: 10
-                            }
+                            },
+                            plotOptions: {
+                                bar: {
+                                    horizontal: false,
+                                    columnWidth: '30%',
+                                    endingShape: 'rounded'
+                                }
+                            },
                         }
+
+                    },
+
+                    {
+                        breakpoint: 991,
+                        options: {
+                            chart: {
+                                height: '300px'
+                            },
+                            stroke: {
+                                colors: ['transparent'],
+                                width: 20
+                            },
+                            plotOptions: {
+                                bar: {
+                                    horizontal: false,
+                                    columnWidth: '20%',
+                                    endingShape: 'rounded'
+                                }
+                            },
+                        },
+                    },
+                    {
+                        breakpoint: 545,
+                        options: {
+                            chart: {
+                                height: '300px'
+                            },
+                            stroke: {
+                                colors: ['transparent'],
+                                width: 10
+                            },
+                            plotOptions: {
+                                bar: {
+                                    horizontal: false,
+                                    columnWidth: '20%',
+                                    endingShape: 'rounded'
+                                }
+                            },
+                        },
                     }
                 ]
             }
@@ -106,9 +155,9 @@ class ShippingChart extends React.Component {
 
     render() {
         return (
-            <div id="chart">
-                <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={300} width="100%" />
-            </div>
+            // <div id="chart" >
+            <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height="100%" width="100%" />
+            // </div>
         );
     }
 }

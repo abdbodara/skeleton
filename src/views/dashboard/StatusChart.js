@@ -16,11 +16,16 @@ class StatusChart extends React.Component {
                 dataLabels: {
                     enabled: false
                 },
-                pie: {
-                    donut: {
-                        size: '45%'
+                plotOptions: {
+                    pie: {
+                  
+                        customScale: 0.7,
+                        donut: {
+                            size: '70%'
+                        },
                     }
                 },
+
                 legend: {
                     position: 'bottom'
                 }

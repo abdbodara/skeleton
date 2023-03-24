@@ -112,9 +112,9 @@ export default function Dashboard() {
                             <PaymentChart />
                         </Box>
                     </Box>
-                    <Box className="chart1">
+                    <Box className="chart1" sx={{display:'flex' , flexDirection:'column'}}>
                         <Box className="title">Shipping Methods</Box>
-                        <Box className="chart">
+                        <Box className="chart" sx={{height:'100%'}}>
                             <ShippingChart />
                         </Box>
                     </Box>
