@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 import data from '../../dashboardData.json';
@@ -18,11 +19,10 @@ class StatusChart extends React.Component {
                 },
                 plotOptions: {
                     pie: {
-                  
                         customScale: 0.7,
                         donut: {
                             size: '70%'
-                        },
+                        }
                     }
                 },
 

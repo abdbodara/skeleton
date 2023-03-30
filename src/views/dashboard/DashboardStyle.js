@@ -124,24 +124,35 @@ const DashboardStyle = styled.div`
                 }
             }
         }
-        .order-main {
-            background: #ffffff;
-            border-radius: 12px;
+        .order-date {
+            display: flex;
+            gap: 20px;
             margin-top: 20px;
-            padding: 20px;
-            h5 {
-                font-weight: 700;
-                font-size: 20px;
-                color: #212121;
+            .order-main {
+                background: #ffffff;
+                border-radius: 12px;
+                padding: 20px;
+                width: 60%;
+                h5 {
+                    font-weight: 700;
+                    font-size: 20px;
+                    color: #212121;
+                }
+                p {
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #757575;
+                    margin-top: 10px;
+                }
+                .chart {
+                    margin-top: 17px;
+                }
             }
-            p {
-                font-weight: 400;
-                font-size: 14px;
-                color: #757575;
-                margin-top: 10px;
-            }
-            .chart {
-                margin-top: 17px;
+            .chart1 {
+                background-color: white;
+                border-radius: 12px;
+                width: 40%;
+                padding: 20px;
             }
         }
         .charts-main {
@@ -152,7 +163,7 @@ const DashboardStyle = styled.div`
             .chart1 {
                 background-color: white;
                 border-radius: 12px;
-                width: calc(33.33% - 14px);
+                width: calc(50% - 14px);
                 @media (max-width: 991px) {
                     width: calc(50% - 10px);
                     &:last-child {

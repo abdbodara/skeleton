@@ -16,14 +16,14 @@ import StatusChart from './StatusChart';
 import ShippingChart from './ShippingChart';
 import OrderProductChart from './OrderProductChart';
 import data from '../../dashboardData.json';
-import orders from '../../OrdersDummyData.json'
+import orders from '../../OrdersDummyData.json';
 import PaymentChart from './PaymentChart';
 
 export default function Dashboard() {
     // const [open, setOpen] = React.useState(false);
     // const handleOpen = () => setOpen(true);
     // const handleClose = () => setOpen(false);
-    console.log('🚀 ~ file: index.js:28 ~ Dashboard ~ resultddddd:',orders.data);
+    console.log('🚀 ~ file: index.js:28 ~ Dashboard ~ resultddddd:', orders.data);
     // const cats = data.orders.reduce((catsSoFar, { category, title }) => {
     //     if (!catsSoFar[category]) catsSoFar[category] = [];
     //     catsSoFar[category].push(title);
@@ -52,9 +52,9 @@ export default function Dashboard() {
                             <WalletIcon />
                         </Box>
                         <Box className="text">
-                            <Typography variant="h4">${orders.data.reduce((total, item) => total + item.total, 0).toFixed(2)}</Typography>
+                            <Typography variant="h4">Days{orders.data.reduce((total, item) => total + item?.total, 0)}</Typography>
                             <Typography variant="h6">
-                                Total <Box>spent</Box>
+                                Average <Box>Processing Time</Box>
                             </Typography>
                         </Box>
                     </Box>
@@ -92,29 +92,31 @@ export default function Dashboard() {
                         </Box>
                     </Box>
                 </Box>
-                <Box className="order-main">
-                    <Typography variant="h5">Orders</Typography>
-                    <Typography>Orders by date</Typography>
-                    <Box className="chart">
-                        <OrderChart />
+                <Box className="order-date">
+                    <Box className="order-main">
+                        <Typography variant="h5">Orders</Typography>
+                        <Typography>Orders by date</Typography>
+                        <Box className="chart">
+                            <OrderChart />
+                        </Box>
                     </Box>
-                </Box>
-                <Box className="charts-main">
                     <Box className="chart1">
                         <Box className="title">Order Statuses</Box>
                         <Box className="chart">
                             <StatusChart />
                         </Box>
                     </Box>
+                </Box>
+                <Box className="charts-main">
                     <Box className="chart1">
                         <Box className="title">Payment Statuses</Box>
                         <Box className="chart">
                             <PaymentChart />
                         </Box>
                     </Box>
-                    <Box className="chart1" sx={{display:'flex' , flexDirection:'column'}}>
+                    <Box className="chart1" sx={{ display: 'flex', flexDirection: 'column' }}>
                         <Box className="title">Shipping Methods</Box>
-                        <Box className="chart" sx={{height:'100%'}}>
+                        <Box className="chart" sx={{ height: '100%' }}>
                             <ShippingChart />
                         </Box>
                     </Box>
@@ -124,20 +126,18 @@ export default function Dashboard() {
                         <Box className="title">Most ordered products</Box>
                         <Box className="chart">
                             <Box className="content">
-                                {data.Orderedproducts?.map((item) => {
-                                    return (
-                                        <Box className="main">
-                                            <Box className="txt1">
-                                                <Box className="dot" style={{ background: item.colors }}></Box>
-                                                <Typography variant="h5">{item.name}</Typography>
-                                            </Box>
-                                            <Box className="txt2">
-                                                <ArrowUpwardIcon />
-                                                <Typography variant="h5">2%</Typography>
-                                            </Box>
+                                {data.Orderedproducts?.map((item) => (
+                                    <Box className="main">
+                                        <Box className="txt1">
+                                            <Box className="dot" style={{ background: item.colors }} />
+                                            <Typography variant="h5">{item.name}</Typography>
                                         </Box>
-                                    );
-                                })}
+                                        <Box className="txt2">
+                                            <ArrowUpwardIcon />
+                                            <Typography variant="h5">2%</Typography>
+                                        </Box>
+                                    </Box>
+                                ))}
                             </Box>
                             <Box className="graph">
                                 <OrderProductChart />
@@ -171,22 +171,18 @@ export default function Dashboard() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {orders.data
-                                        .map((item) => {
-                                            return (
-                                                <tr>
-                                                    <td>{item.internalId}</td>
-                                                    <td>#{item.purchaseOrderNumber}</td>
-                                                    <td>{moment(item.createdAt).format('DD.MM.YYYY')}</td>
-                                                    <td>${item.total}</td>
-                                                    <td>{item.shippingMethod.displayName
-}</td>
-                                                    <td>
-                                                        <ViewIcon />
-                                                    </td>
-                                                </tr>
-                                            );
-                                        })}
+                                    {orders.data.map((item) => (
+                                        <tr>
+                                            <td>{item.internalId}</td>
+                                            <td>#{item.purchaseOrderNumber}</td>
+                                            <td>{moment(item.createdAt).format('DD.MM.YYYY')}</td>
+                                            <td>${item.total}</td>
+                                            <td>{item.shippingMethod.displayName}</td>
+                                            <td>
+                                                <ViewIcon />
+                                            </td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </Box>
