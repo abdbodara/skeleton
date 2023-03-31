@@ -37,6 +37,9 @@ const DashboardStyle = styled.div`
             width: max-content;
             margin: 11px 0;
             margin-left: auto;
+            gap: 16px;
+                display: flex;
+                align-items: center;
             > div {
                 gap: 16px;
                 display: flex;
@@ -163,7 +166,7 @@ const DashboardStyle = styled.div`
             .chart1 {
                 background-color: white;
                 border-radius: 12px;
-                width: calc(50% - 14px);
+                width: calc(33.3% - 14px);
                 @media (max-width: 991px) {
                     width: calc(50% - 10px);
                     &:last-child {

@@ -1,5 +1,5 @@
 // material-ui
-import { Typography } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Box from '@mui/material/Box';
@@ -18,8 +18,27 @@ import OrderProductChart from './OrderProductChart';
 import data from '../../dashboardData.json';
 import orders from '../../OrdersDummyData.json';
 import PaymentChart from './PaymentChart';
-
+import WorldMap from './WorldMap';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { useState } from 'react';
+import { useRef } from 'react';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 export default function Dashboard() {
+    const [date, setDate] = useState(new Date());
+    console.log('🚀 ~ file: index.js:28 ~ Dashboard ~ date:', date);
+    const [isOpen, setIsOpen] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClick = (event) => {
+      setIsOpen((isOpen) => !isOpen);
+      setAnchorEl(event.currentTarget);
+    };
+
+    const onChangeHandler = (_date, keyboardInputValue) => {
+        if (_date) {
+            setDate(_date);
+        }
+    };
     // const [open, setOpen] = React.useState(false);
     // const handleOpen = () => setOpen(true);
     // const handleClose = () => setOpen(false);
@@ -43,8 +62,40 @@ export default function Dashboard() {
                 <Box className="date-main">
                     <Box>
                         <Typography>Filter by Date</Typography>
-                        <CalendarIcon />
                     </Box>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                            onChange={onChangeHandler}
+                            onClose={() => {
+                                setIsOpen(false);
+                            }}
+                            open={isOpen}
+                            value={date}
+                            PopperProps={{
+                                placement: "bottom-end",
+                                anchorEl: anchorEl
+                              }}
+                            renderInput={({ ref, inputProps, disabled, onChange, value, ...other }) => (
+                                <div ref={ref}>
+                                    <input
+                                        style={{ display: 'none' }}
+                                        value={date.toISOString()}
+                                        onChange={onChange}
+                                        // disabled={disabled}
+                                        // ref={customInputRef}
+                                        {...inputProps}
+                                    />
+                                    <IconButton
+                                        onClick={handleClick}
+                                        color="secondary"
+                                        aria-label="data"
+                                    >
+                                        <CalendarIcon />
+                                    </IconButton>
+                                </div>
+                            )}
+                        />
+                    </LocalizationProvider>
                 </Box>
                 <Box className="cards-main">
                     <Box className="card">
@@ -97,7 +148,7 @@ export default function Dashboard() {
                         <Typography variant="h5">Orders</Typography>
                         <Typography>Orders by date</Typography>
                         <Box className="chart">
-                            <OrderChart />
+                            <OrderChart Date={date} />
                         </Box>
                     </Box>
                     <Box className="chart1">
@@ -112,6 +163,12 @@ export default function Dashboard() {
                         <Box className="title">Payment Statuses</Box>
                         <Box className="chart">
                             <PaymentChart />
+                        </Box>
+                    </Box>
+                    <Box className="chart1">
+                        <Box className="title">Payment Statuses</Box>
+                        <Box className="chart">
+                            <WorldMap />
                         </Box>
                     </Box>
                     <Box className="chart1" sx={{ display: 'flex', flexDirection: 'column' }}>
