@@ -154,7 +154,7 @@ export default function Dashboard() {
                     <Box className="chart1">
                         <Box className="title">Order Statuses</Box>
                         <Box className="chart">
-                            <StatusChart />
+                            <StatusChart Date={date}/>
                         </Box>
                     </Box>
                 </Box>
@@ -162,7 +162,7 @@ export default function Dashboard() {
                     <Box className="chart1">
                         <Box className="title">Payment Statuses</Box>
                         <Box className="chart">
-                            <PaymentChart />
+                            <PaymentChart Date={date}/>
                         </Box>
                     </Box>
                     <Box className="chart1">
@@ -174,7 +174,7 @@ export default function Dashboard() {
                     <Box className="chart1" sx={{ display: 'flex', flexDirection: 'column' }}>
                         <Box className="title">Shipping Methods</Box>
                         <Box className="chart" sx={{ height: '100%' }}>
-                            <ShippingChart />
+                            <ShippingChart Date={date}/>
                         </Box>
                     </Box>
                 </Box>
@@ -197,7 +197,7 @@ export default function Dashboard() {
                                 ))}
                             </Box>
                             <Box className="graph">
-                                <OrderProductChart />
+                                <OrderProductChart Date={date}/>
                             </Box>
                         </Box>
                     </Box>

@@ -1,53 +1,86 @@
-import React from 'react';
+import moment from 'moment';
+import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import data from '../../dashboardData.json';
-import orders from '../../OrdersDummyData.json'
-import _ from 'lodash'
-
-class PaymentChart extends React.Component {
-    constructor(props) {
-        let orderStatus, price;
-        const results = orders.data.map(o => o.paymentStatus).map((item) => {
-            orderStatus = _.groupBy(item, 'displayName')
-        })
 
 
-        super(props);
-        this.state = {
-            series: [96, 85, 41],
-            options: {
-                labels: [Object.keys(orderStatus), "Completed", "Processing"],
-                chart: {
-                    type: 'donut',
 
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                plotOptions: {
-                    pie: {
-                        donut: {
-                            size: '70%'
-                        },
-                        customScale: 0.7
+const PaymentChart = ({ Date }) => {
+    const dateString = Date.$d;
+    const dateObject = moment(dateString, "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
+    const formattedDate = dateObject.format("DD-MM-YYYY");
+    console.log("🚀 ~ file: PaymentChart.js:12 ~ PaymentChart ~ formattedDate:", formattedDate)
+    const paymentChart = {
+        // series: [96, 85, 41],
+        options: {
+            labels: data.paymentchart.status,
+            chart: {
+                type: 'donut',
 
-                    }
-                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: '70%'
+                    },
+                    customScale: 0.7
 
-                legend: {
-                    position: 'bottom'
                 }
+            },
+
+            legend: {
+                position: 'bottom'
             }
-        };
+        }
+    };
+
+    const [countStatusPending,setCountStatusPending] = useState(0)
+    const [countStatusCompleted,setCountStatusCompleted] = useState(0)
+    const [countStatusProcessing,setCountStatusProcessing] = useState(0)
+
+    const countArray = [countStatusPending,countStatusCompleted,countStatusProcessing]
+    console.log("🚀 ~ file: PaymentChart.js:45 ~ PaymentChart ~ countArray:", countArray)
+    
+
+    const handleStatusCount = () => {
+        const countStatusPending = data.orders.filter((item) => item.paymentStatus === 'Pending')
+        setCountStatusPending(countStatusPending?.length)
+        const countStatusCompleted = data.orders.filter((item) => item.paymentStatus === 'Completed')
+        setCountStatusCompleted(countStatusCompleted?.length)
+        const countStatusProcessing = data.orders.filter((item) => item.paymentStatus === 'Processing')
+        setCountStatusProcessing(countStatusProcessing?.length)
     }
 
-    render() {
+    const HandleStatusByDate = () => {
+        const result = data.orders.filter((date) => moment(date.order_date).format('DD-MM-YYYY')
+         == formattedDate)
+        console.log("🚀 ~ file: StatusChart.js:59 ~ HandleStatusByDate ~ result:", result)
+        if(result.length > 0){
+            console.log("hereherehre")
+            const countStatusPending = result.filter((item) => item.paymentStatus === 'Pending')
+            setCountStatusPending(countStatusPending?.length)
+            const countStatusCompleted = result.filter((item) => item.paymentStatus === 'Completed')
+            setCountStatusCompleted(countStatusCompleted?.length)
+            const countStatusProcessing = result.filter((item) => item.paymentStatus === 'Processing')
+            setCountStatusProcessing(countStatusProcessing?.length)
+        }
+    }
+
+    // useEffect(()=> {
+    // },[])
+    
+    useEffect(()=> {
+        handleStatusCount()
+        HandleStatusByDate()    
+    },[Date])
         return (
             <div id="chart">
-                <ReactApexChart options={this.state.options} series={this.state.series} type="donut" />
+                <ReactApexChart options={paymentChart.options} series={countArray} type="donut" />
             </div>
         );
-    }
 }
 
 export default PaymentChart;
