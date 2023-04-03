@@ -64,56 +64,58 @@ const OrderProductChart = ({ Date }) => {
         
     }
 
-    // const HandleStatusByDate = () => {
-    //     const productOne = [];
-    //     const productTwo = [];
-    //     const productThree = [];
-    //     const productFour = [];
-    //     const result = data.orders.filter((date) => moment(date.order_date).format('DD-MM-YYYY')
-    //      == formattedDate)
-    //     console.log("🚀 ~ file: OrderProductChart.js:73 ~ HandleStatusByDate ~ result:", result)
-    //     if(result.length > 0){
-    //         const countProductOne = result?.filter((product) => product.product_name === 'Product 1')
-    //         console.log("🚀 ~ file: OrderProductChart.js:77 ~ HandleStatusByDate ~ countProductOne:", countProductOne)
-    //         productOne.push(...countProductOne)
-    //         console.log("🚀 ~ file: OrderProductChart.js:78 ~ HandleStatusByDate ~ productOne:", productOne)
-    //         let pOne = 0;
-    //         productOne.map((item) => {
-    //             pOne += item.quantity;
-    //         })
-    //         console.log("🚀 ~ file: OrderProductChart.js:79 ~ HandleStatusByDate ~ pOne:", pOne)
-    //         setCountProductOne(pOne)
+    const HandleStatusByDate = () => {
+        const productOne = [];
+        const productTwo = [];
+        const productThree = [];
+        const productFour = [];
+        const result = data.orders.filter((date) => moment(date.order_date).format('DD-MM-YYYY')
+         == formattedDate)
+        console.log("🚀 ~ file: OrderProductChart.js:73 ~ HandleStatusByDate ~ result:", result)
+        if(result.length > 0){
+            result.map((item) => {
+            const countProductOne = item.products?.filter((product) => product.product_name === 'Product 1')
+            console.log("🚀 ~ file: OrderProductChart.js:77 ~ HandleStatusByDate ~ countProductOne:", countProductOne)
+            productOne.push(...countProductOne)
+            console.log("🚀 ~ file: OrderProductChart.js:78 ~ HandleStatusByDate ~ productOne:", productOne)
+            let pOne = 0;
+            productOne.map((item) => {
+                pOne += item.quantity;
+            })
+            console.log("🚀 ~ file: OrderProductChart.js:79 ~ HandleStatusByDate ~ pOne:", pOne)
+            setCountProductOne(pOne)
 
-    //         const countProductTwo = result?.filter((product) => product.product_name === 'Product 2')
-    //         productTwo.push(...countProductTwo)
-    //         let pTwo = 0;
-    //         productTwo.map((item) => {
-    //             pTwo += item.quantity;
-    //         })
-    //         setCountProductTwo(pTwo)
+            const countProductTwo = item.products?.filter((product) => product.product_name === 'Product 2')
+            productTwo.push(...countProductTwo)
+            let pTwo = 0;
+            productTwo.map((item) => {
+                pTwo += item.quantity;
+            })
+            setCountProductTwo(pTwo)
 
-    //         const countProductThree = result?.filter((product) => product.product_name === 'Product 3')
-    //         productThree.push(...countProductThree)
-    //         let pThree = 0;
-    //         productThree.map((item) => {
-    //             pThree += item.quantity;
-    //         })
-    //         setCountProductThree(pThree)
+            const countProductThree = item.products?.filter((product) => product.product_name === 'Product 3')
+            productThree.push(...countProductThree)
+            let pThree = 0;
+            productThree.map((item) => {
+                pThree += item.quantity;
+            })
+            setCountProductThree(pThree)
 
-    //         const countProductFour = result?.filter((product) => product.product_name === 'Product 4')
-    //         productFour.push(...countProductFour)
-    //         let pFour = 0;
-    //         productFour.map((item) => {
-    //             pFour += item.quantity;
-    //         })
-    //         setCountProductFour(pFour)
-    //     }
-    // }
+            const countProductFour = item.products?.filter((product) => product.product_name === 'Product 4')
+            productFour.push(...countProductFour)
+            let pFour = 0;
+            productFour.map((item) => {
+                pFour += item.quantity;
+            })
+            setCountProductFour(pFour)
+        })
+        }
+    }
 
 
     useEffect(() => {
         handleStatusCount()
-        // HandleStatusByDate()
+        HandleStatusByDate()
     }, [Date])
 
     useEffect(() => {
