@@ -5,9 +5,8 @@ import data from '../../dashboardData.json';
 
 
 const OrderProductChart = ({ Date }) => {
-    const dateString = Date.$d;
-    const dateObject = moment(dateString, "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
-    const formattedDate = dateObject.format("DD-MM-YYYY");
+    const startDate = moment(Date?.startDate).format("YYYY-MM-DD")
+    const endDate = moment(Date?.endDate).format("YYYY-MM-DD")
 
     const [countProductOne, setCountProductOne] = useState()
     console.log("🚀 ~ file: OrderProductChart.js:13 ~ OrderProductChart ~ countProductOne:", countProductOne)
@@ -69,8 +68,9 @@ const OrderProductChart = ({ Date }) => {
         const productTwo = [];
         const productThree = [];
         const productFour = [];
-        const result = data.orders.filter((date) => moment(date.order_date).format('DD-MM-YYYY')
-         == formattedDate)
+        const result = data.orders.filter((date) =>
+        moment(date.order_date).format("YYYY-MM-DD") > startDate && moment(date.order_date).format("YYYY-MM-DD") <= endDate
+         )
         console.log("🚀 ~ file: OrderProductChart.js:73 ~ HandleStatusByDate ~ result:", result)
         if(result.length > 0){
             result.map((item) => {

@@ -5,6 +5,8 @@ import moment from 'moment';
 import data from '../../dashboardData.json';
 
 const ShippingChart = ({ Date }) => {
+    const startDate = moment(Date?.startDate).format("YYYY-MM-DD")
+    const endDate = moment(Date?.endDate).format("YYYY-MM-DD")
     const dateString = Date.$d;
     const dateObject = moment(dateString, "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
     const formattedDate = dateObject.format("DD-MM-YYYY");
@@ -42,8 +44,9 @@ const ShippingChart = ({ Date }) => {
     }
 
     const HandleStatusByDate = () => {
-        const result = data.orders.filter((date) => moment(date.order_date).format('DD-MM-YYYY')
-         == formattedDate)
+        const result = data.orders.filter((date) =>
+        moment(date.order_date).format("YYYY-MM-DD") > startDate && moment(date.order_date).format("YYYY-MM-DD") <= endDate
+         )
         console.log("🚀 ~ file: StatusChart.js:59 ~ HandleStatusByDate ~ result:", result)
         if(result.length > 0){
             const countStatusPending = result.filter((item) => item.deliverymethod === 'Exworks')

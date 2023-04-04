@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import moment from 'moment';
-
+import { DateRangePicker } from "materialui-daterange-picker";
 // project imports
 import * as React from 'react';
 import DashboardStyle from './DashboardStyle';
@@ -28,26 +28,20 @@ export default function Dashboard() {
     console.log('🚀 ~ file: index.js:28 ~ Dashboard ~ date:', date);
     const [isOpen, setIsOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
+    const [dateRange, setDateRange] = useState({});
+    console.log("🚀 ~ file: index.js:32 ~ Dashboard ~ dateRange:", dateRange)
 
     const handleClick = (event) => {
-      setIsOpen((isOpen) => !isOpen);
-      setAnchorEl(event.currentTarget);
+        setIsOpen((isOpen) => !isOpen);
+        setAnchorEl(event.currentTarget);
     };
-
+    const toggle = () => setIsOpen(!isOpen);
     const onChangeHandler = (_date, keyboardInputValue) => {
         if (_date) {
             setDate(_date);
         }
     };
-    // const [open, setOpen] = React.useState(false);
-    // const handleOpen = () => setOpen(true);
-    // const handleClose = () => setOpen(false);
-    console.log('🚀 ~ file: index.js:28 ~ Dashboard ~ resultddddd:', orders.data);
-    // const cats = data.orders.reduce((catsSoFar, { category, title }) => {
-    //     if (!catsSoFar[category]) catsSoFar[category] = [];
-    //     catsSoFar[category].push(title);
-    //     return catsSoFar;
-    //   }, {});
+
     return (
         <DashboardStyle>
             <Box className="main-dashboard">
@@ -64,38 +58,21 @@ export default function Dashboard() {
                         <Typography>Filter by Date</Typography>
                     </Box>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker
-                            onChange={onChangeHandler}
-                            onClose={() => {
-                                setIsOpen(false);
-                            }}
-                            open={isOpen}
-                            value={date}
-                            PopperProps={{
-                                placement: "bottom-end",
-                                anchorEl: anchorEl
-                              }}
-                            renderInput={({ ref, inputProps, disabled, onChange, value, ...other }) => (
-                                <div ref={ref}>
-                                    <input
-                                        style={{ display: 'none' }}
-                                        value={date.toISOString()}
-                                        onChange={onChange}
-                                        // disabled={disabled}
-                                        // ref={customInputRef}
-                                        {...inputProps}
-                                    />
-                                    <IconButton
-                                        onClick={handleClick}
-                                        color="secondary"
-                                        aria-label="data"
-                                    >
-                                        <CalendarIcon />
-                                    </IconButton>
-                                </div>
-                            )}
-                        />
+                        <IconButton
+                            onClick={handleClick}
+                            color="secondary"
+                            aria-label="data"
+                        >
+                            <CalendarIcon />
+                        </IconButton>
                     </LocalizationProvider>
+                </Box>
+                <Box sx={{ width: 'fit-content', marginLeft: 'auto', position: 'absolute', top: '230px', right: '40px' }}>
+                    <DateRangePicker
+                        open={isOpen}
+                        toggle={toggle}
+                        onChange={(range) => setDateRange(range)}
+                    />
                 </Box>
                 <Box className="cards-main">
                     <Box className="card">
@@ -154,7 +131,7 @@ export default function Dashboard() {
                     <Box className="chart1">
                         <Box className="title">Order Statuses</Box>
                         <Box className="chart">
-                            <StatusChart Date={date}/>
+                            <StatusChart Date={dateRange} />
                         </Box>
                     </Box>
                 </Box>
@@ -162,7 +139,7 @@ export default function Dashboard() {
                     <Box className="chart1">
                         <Box className="title">Payment Statuses</Box>
                         <Box className="chart">
-                            <PaymentChart Date={date}/>
+                            <PaymentChart Date={dateRange} />
                         </Box>
                     </Box>
                     <Box className="chart1">
@@ -174,7 +151,7 @@ export default function Dashboard() {
                     <Box className="chart1" sx={{ display: 'flex', flexDirection: 'column' }}>
                         <Box className="title">Shipping Methods</Box>
                         <Box className="chart" sx={{ height: '100%' }}>
-                            <ShippingChart Date={date}/>
+                            <ShippingChart Date={dateRange} />
                         </Box>
                     </Box>
                 </Box>
@@ -197,7 +174,7 @@ export default function Dashboard() {
                                 ))}
                             </Box>
                             <Box className="graph">
-                                <OrderProductChart Date={date}/>
+                                <OrderProductChart Date={dateRange} />
                             </Box>
                         </Box>
                     </Box>

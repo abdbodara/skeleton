@@ -4,19 +4,32 @@ import _ from 'lodash';
 
 import data from '../../dashboardData.json';
 
+console.log("🚀 ~ file: OrderChart.js:94 ~ data:", data)
 import moment from 'moment';
 
 import orders from '../../OrdersDummyData.json';
+console.log("🚀 ~ file: OrderChart.js:97 ~ orders:", orders)
+
+
+
+
+
+
+
+
+
+
+
 
 
 const OrderChart = ({ Date }) => {
-    const dateString = Date.$d;
-    const dateObject = moment(dateString, "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
-    const formattedDate = dateObject.format("YYYY-MM-DDTHH:mm:ss[Z]");
+    const startDate = moment(Date?.startDate).format("YYYY-MM-DD")
+    const endDate = moment(Date?.endDate).format("YYYY-MM-DD")
     const [series, setSeries] = useState([{
         name: 'series1',
         data: []
     }]);
+
     const [options, setOptions] = useState({
         chart: {
             height: 300,
@@ -70,17 +83,21 @@ const OrderChart = ({ Date }) => {
     });
 
     const [totalOrder, settotalOrders] = useState([4000, 4000, 4863, 7568, 7441, 4544])
-
+    console.log("🚀 ~ file: OrderChart.js:162 ~ OrderChart ~ totalOrder:", totalOrder)
 
     function HandleOrder() {
         let pid;
         const results = data.orders.map((o) => moment(o.order_date).format('MMM'));
-        const result = data.orders.filter((date) => moment(date.order_date).format('DD-MM-YYYY') === moment(formattedDate).format('DD-MM-YYYY'))
-            .map((item) => {
-                return item
-            }
+        const uniqueMonths = [...new Set(results)];
+
+        const result = data.orders.filter((date) =>
+        moment(date.order_date).format("YYYY-MM-DD") > startDate && moment(date.order_date).format("YYYY-MM-DD") <= endDate
+         )
+        .map((item) => {
+            return item
+        }
             );
-        
+        console.log("🚀 ~ file: OrderChart.js:87 ~ HandleOrder ~ result:", result)
         const orders1 = orders.data.map((item) => item.lineItems);
         orders1.forEach((item) => {
             item.forEach((itema) => {
@@ -91,9 +108,9 @@ const OrderChart = ({ Date }) => {
             name: 'series1',
             data: totalOrder
         }]);
-        
+        console.log("🚀 ~ file: OrderChart.js:169 ~ HandleOrder ~ pid:", pid)
         settotalOrders([pid, result.length])
-        setOptions((prevState) => ({ ...prevState, xaxis: { ...prevState.xaxis, categories: results } }));
+        setOptions((prevState) => ({ ...prevState, xaxis: { ...prevState.xaxis, categories: uniqueMonths } }));
     }
 
     useEffect(() => {
