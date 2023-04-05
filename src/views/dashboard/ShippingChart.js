@@ -118,7 +118,7 @@ const ShippingChart = ({ Date }) => {
             },
             colors: ['#673AB7', '#00C853', '#2196F3'],
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                categories: ['Feb', 'Mar', 'Apr'],
                 axisTicks: {
                     show: false
                 },

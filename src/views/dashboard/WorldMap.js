@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     ComposableMap,
     ZoomableGroup,
@@ -11,6 +11,7 @@ import {
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import { geoAlbersUsa } from "d3-geo";
+import data from '../../dashboardData.json';
 
 const offsets = {
     VT: [50, -8],
@@ -26,13 +27,24 @@ const offsets = {
 
 const WorldMap = () => {
     const [content, setTooltipContent] = useState("");
-    console.log("🚀 ~ file: WorldMap.js:27 ~ WorldMap ~ content:", content)
+    const [countryOrders,setCountryOrders] = useState()
+
+    const handleCountryOrder = () => {
+        const orderData = data.orders.filter((item)=> item?.country === content)
+        setCountryOrders(orderData?.length)
+    }
+
+
+    useEffect(()=> {
+        handleCountryOrder()
+    },[content])
+
     const geoUrl =
         "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json"
         const highlightedCountries = ["United States", "Canada", "Mexico", "Brazil", "Argentina"];
     return (<>
 
-        <Tooltip id={content}>{content}</Tooltip>
+        <Tooltip id={content}>{countryOrders}</Tooltip>
         <div>
             <ComposableMap>
                 {/* <Geographies geography={geoUrl}>
@@ -81,7 +93,6 @@ const WorldMap = () => {
                     {({ geographies }) =>
                         geographies.map((geo) => {
                             const isHighlighted = highlightedCountries.includes(geo.properties.name); // replace "United States" with the name of the country you want to highlight
-
                             return (
                                 <>
                                     <Geography

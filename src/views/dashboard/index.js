@@ -125,7 +125,7 @@ export default function Dashboard() {
                         <Typography variant="h5">Orders</Typography>
                         <Typography>Orders by date</Typography>
                         <Box className="chart">
-                            <OrderChart Date={date} />
+                            <OrderChart Date={dateRange} />
                         </Box>
                     </Box>
                     <Box className="chart1">

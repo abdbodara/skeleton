@@ -10,6 +10,7 @@
       "status":"Pending",
       "paymentStatus" : "Pending",
       "totalOrder" : 2000,
+      "country": "India",
       "products": [
         {
           "product_id": "P001",
@@ -38,6 +39,7 @@
       "status":"Pending",
       "paymentStatus" : "Completed",
       "totalOrder" : 6000,
+      "country": "India",
       "products": [
         {
           "product_id": "P002",
@@ -66,6 +68,7 @@
       "status":"Pending",
       "paymentStatus" : "Pending",
       "totalOrder" : 7000,
+      "country": "India",
       "products": [
         {
           "product_id": "P003",
@@ -94,6 +97,7 @@
       "status":"Pending",
       "paymentStatus" : "Pending",
       "totalOrder" : 3000,
+      "country": "India",
       "products": [
         {
           "product_id": "P001",
@@ -122,6 +126,7 @@
       "paymentStatus" : "Pending",
       "deliverymethod": "Exworks",
       "totalOrder" : 8000,
+      "country": "Australia",
       "products": [
         {
           "product_id": "P002",
@@ -150,6 +155,7 @@
       "status":"Processing",
       "paymentStatus" : "Processing",
       "totalOrder" : 5000,
+      "country": "Australia",
       "products": [
         {
           "product_id": "P003",
@@ -178,6 +184,7 @@
       "status":"Processing",
       "paymentStatus" : "Processing",
       "totalOrder" : 9000,
+      "country": "Australia",
       "products": [
         {
           "product_id": "P001",
@@ -206,6 +213,7 @@
       "status":"Processing",
       "paymentStatus" : "Completed",
       "totalOrder" : 3000,
+      "country": "United States of America",
       "products": [
         {
           "product_id": "P002",
@@ -234,6 +242,7 @@
       "status":"Completed",
       "paymentStatus" : "Completed",
       "totalOrder" : 6000,
+      "country": "Antarctica",
       "products": [
         {
           "product_id": "P003",
@@ -262,6 +271,7 @@
       "status":"Completed",
       "paymentStatus" : "Completed",
       "totalOrder" : 8000,
+      "country": "Antarctica",
       "products": [
         {
           "product_id": "P001",
@@ -289,7 +299,8 @@
       "deliverymethod": "Exworks",
       "status":"Completed",
       "paymentStatus" : "Completed",
-      "totalOrder" : 8000,      
+      "totalOrder" : 8000,     
+      "country": "Antarctica", 
       "products": [
         {
           "product_id": "P002",
