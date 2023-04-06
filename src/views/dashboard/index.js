@@ -69,6 +69,7 @@ export default function Dashboard() {
                 </Box>
                 <Box sx={{ width: 'fit-content', marginLeft: 'auto', position: 'absolute', top: '230px', right: '40px' }}>
                     <DateRangePicker
+                        wrapperClassName="datepicker12"
                         open={isOpen}
                         toggle={toggle}
                         onChange={(range) => setDateRange(range)}
@@ -143,7 +144,7 @@ export default function Dashboard() {
                         </Box>
                     </Box>
                     <Box className="chart1">
-                        <Box className="title">Payment Statuses</Box>
+                        <Box className="title">Shipments Map</Box>
                         <Box className="chart">
                             <WorldMap />
                         </Box>

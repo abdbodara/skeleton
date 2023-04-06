@@ -40,7 +40,7 @@ const PaymentChart = ({ Date }) => {
     const [countStatusProcessing,setCountStatusProcessing] = useState(0)
 
     const countArray = [countStatusPending,countStatusCompleted,countStatusProcessing]
-    console.log("🚀 ~ file: PaymentChart.js:45 ~ PaymentChart ~ countArray:", countArray)
+
     
 
     const handleStatusCount = () => {
@@ -56,7 +56,7 @@ const PaymentChart = ({ Date }) => {
         const result = data.orders.filter((date) =>
         moment(date.order_date).format("YYYY-MM-DD") > startDate && moment(date.order_date).format("YYYY-MM-DD") <= endDate
          )
-        console.log("🚀 ~ file: StatusChart.js:59 ~ HandleStatusByDate ~ result:", result)
+        
         if(result.length > 0){
             console.log("hereherehre")
             const countStatusPending = result.filter((item) => item.paymentStatus === 'Pending')

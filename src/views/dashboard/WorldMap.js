@@ -12,6 +12,7 @@ import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import { geoAlbersUsa } from "d3-geo";
 import data from '../../dashboardData.json';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 const offsets = {
     VT: [50, -8],
@@ -28,12 +29,28 @@ const offsets = {
 const WorldMap = () => {
     const [content, setTooltipContent] = useState("");
     const [countryOrders,setCountryOrders] = useState()
-
+    const [tableSelectedData,setTabelSelectedData] = useState()
+    console.log("🚀 ~ file: WorldMap.js:33 ~ WorldMap ~ tableSelectedData:", tableSelectedData)
+    const highlightedCountries = ["India", "Australia", "United States of America", "Argentina"];
+    
     const handleCountryOrder = () => {
         const orderData = data.orders.filter((item)=> item?.country === content)
         setCountryOrders(orderData?.length)
-    }
 
+        const filteredData = data.orders.filter((item) => highlightedCountries.includes(item.country));
+
+        const countryCounts = filteredData.reduce((acc, item) => {
+        acc[item.country] = (acc[item.country] || 0) + 1;
+        return acc;
+        }, {});
+
+        const result = Object.entries(countryCounts).map(([country, count]) => {
+        return { country, order: count };
+        });
+        setTabelSelectedData(result)
+       
+    }
+    
 
     useEffect(()=> {
         handleCountryOrder()
@@ -41,7 +58,6 @@ const WorldMap = () => {
 
     const geoUrl =
         "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json"
-        const highlightedCountries = ["United States", "Canada", "Mexico", "Brazil", "Argentina"];
     return (<>
 
         <Tooltip id={content}>{countryOrders}</Tooltip>
@@ -134,6 +150,23 @@ const WorldMap = () => {
 
             </ComposableMap>
         </div>
+        <TableContainer  sx={{paddingX:5}}>
+      <Table sx={{ minWidth: 400 }} aria-label="simple table">
+        <TableBody >
+            {tableSelectedData !== undefined && tableSelectedData?.map((item)=> (
+                // {console.log(item,"kjqefbehc")}
+                
+                    
+               
+                <TableRow>
+                    <TableCell align="left">{item?.country}</TableCell>
+                    <TableCell align="right">{item?.order} Shipments</TableCell>
+            
+                </TableRow>
+            ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
     </>
     )
 }

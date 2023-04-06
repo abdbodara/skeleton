@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import _ from 'lodash';
+import _, { set } from 'lodash';
 
 import data from '../../dashboardData.json';
 
@@ -70,47 +70,59 @@ const OrderChart = ({ Date }) => {
         }
     });
 
-    const [array,setArray] = useState([])
+
+    const [array, setArray] = useState([])
+   
 
     const handleTotalOrder = () => {
+        const results = data.orders.map((o) => moment(o.order_date).format('MMM'));
+        const uniqueMonths = [...new Set(results)];
+   
         const march = data.orders.filter((item) => moment(item.order_date).format('MMMM') === 'March')
         const april = data.orders.filter((item) => moment(item.order_date).format('MMMM') === 'April')
         const may = data.orders.filter((item) => moment(item.order_date).format('MMMM') === 'May')
         const june = data.orders.filter((item) => moment(item.order_date).format('MMMM') === 'June')
-        const july = data.orders.filter((item) => moment(item.order_date).format('MMMM') === 'July') 
+        const july = data.orders.filter((item) => moment(item.order_date).format('MMMM') === 'July')
         const august = data.orders.filter((item) => moment(item.order_date).format('MMMM') === 'August')
         const september = data.orders.filter((item) => moment(item.order_date).format('MMMM') === 'September')
         const october = data.orders.filter((item) => moment(item.order_date).format('MMMM') === 'October')
         const november = data.orders.filter((item) => moment(item.order_date).format('MMMM') === 'November')
         const december = data.orders.filter((item) => moment(item.order_date).format('MMMM') === 'December')
-        setArray([march?.length,april?.length,may?.length,june?.length,july?.length,august?.length,september?.length,october?.length,november?.length,december?.length]);
-       
+        setArray([march?.length, april?.length, may?.length, june?.length, july?.length, august?.length, september?.length, october?.length, november?.length, december?.length]);
+        setOptions((prevState) => ({ ...prevState, xaxis: { ...prevState.xaxis, categories: uniqueMonths } }));
+
     }
 
     function HandleOrderByDate() {
         const results = data.orders.map((o) => moment(o.order_date).format('MMM'));
-        const uniqueMonths = [...new Set(results)];
+        const start = moment(startDate);
+        const end = moment(endDate);
+        const newMonths = [];
 
+        while (start.isBefore(end) || start.isSame(end)) {
+            newMonths.push(start.format('MMM YYYY'));
+            start.add(1, 'month');
+        }
+        if (newMonths.length === 1) {
+            const monthName = moment(newMonths[0], 'MMM YYYY').format('MMM');
+            newMonths.unshift(`1 ${monthName}`);
+        }
         const result = data.orders.filter((date) =>
             moment(date.order_date).format("YYYY-MM-DD") > startDate && moment(date.order_date).format("YYYY-MM-DD") <= endDate
-    
         )
-        console.log("🚀 ~ file: OrderChart.js:102 ~ result ~ result:", result)
-
-        if(result.length > 0){
-            const march = result.filter((item) => moment(item.order_date).format('MMMM') === 'March')
-            const april = result.filter((item) => moment(item.order_date).format('MMMM') === 'April')
-            const may = result.filter((item) => moment(item.order_date).format('MMMM') === 'May')
-            const june =result.filter((item) => moment(item.order_date).format('MMMM') === 'June')
-            const july = result.filter((item) => moment(item.order_date).format('MMMM') === 'July') 
-            const august = result.filter((item) => moment(item.order_date).format('MMMM') === 'August')
-            const september = result.filter((item) => moment(item.order_date).format('MMMM') === 'September')
-            const october = result.filter((item) => moment(item.order_date).format('MMMM') === 'October')
-            const november = result.filter((item) => moment(item.order_date).format('MMMM') === 'November')
-            const december = result.filter((item) => moment(item.order_date).format('MMMM') === 'December')
-            setArray([march?.length,april?.length,may?.length,june?.length,july?.length,august?.length,september?.length,october?.length,november?.length,december?.length]);
+        const dataArr = [];
+        if (result.length > 0) {
+            newMonths.forEach((month) => {
+                const datamain = result.filter((item) => moment(item.order_date).format("MMM YYYY") === month);
+                dataArr.push(datamain.length);
+            });
+            if (dataArr.length > 1) {
+                setArray(dataArr)
+            } else {
+                setArray([0, dataArr[0]])
+            }
+            setOptions((prevState) => ({ ...prevState, xaxis: { ...prevState.xaxis, categories: newMonths } }));
         }
-        setOptions((prevState) => ({ ...prevState, xaxis: { ...prevState.xaxis, categories: uniqueMonths } }));
     }
 
     useEffect(() => {
@@ -118,16 +130,16 @@ const OrderChart = ({ Date }) => {
         HandleOrderByDate()
     }, [Date]);
 
-    useEffect(()=>{
+    useEffect(() => {
         setSeries([{
             name: 'series1',
             data: array
         }]);
-    },[array])
+    }, [array])
 
     return (
         <div id="chart">
-            <ReactApexChart options={options} series={series} type="area" height={300} />
+            <ReactApexChart options={options} series={series} type="area" height={400} />
         </div>
     );
 };

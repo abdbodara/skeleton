@@ -8,8 +8,8 @@ import data from '../../dashboardData.json';
 
 
 
-const StatusChart =({ Date })=>{
-    
+const StatusChart = ({ Date }) => {
+
     const startDate = moment(Date?.startDate).format("YYYY-MM-DD")
     const endDate = moment(Date?.endDate).format("YYYY-MM-DD")
     // const dateString = Date.$d;
@@ -22,6 +22,7 @@ const StatusChart =({ Date })=>{
             chart: {
                 type: 'donut',
                 width: '100%'
+
             },
             dataLabels: {
                 enabled: false
@@ -41,11 +42,11 @@ const StatusChart =({ Date })=>{
         }
     }
 
-    const [countPending,setCountPending] = useState(0)
-    const [countCompleted,setCountCompleted] = useState(0)
-    const [countProcessing,setCountProcessing] = useState(0)
+    const [countPending, setCountPending] = useState(0)
+    const [countCompleted, setCountCompleted] = useState(0)
+    const [countProcessing, setCountProcessing] = useState(0)
 
-    const countArray = [countPending,countCompleted,countProcessing]
+    const countArray = [countPending, countCompleted, countProcessing]
 
     const handleStatusCount = () => {
         const countStatusPending = data.orders.filter((item) => item.status === 'Pending')
@@ -58,9 +59,9 @@ const StatusChart =({ Date })=>{
 
     const HandleStatusByDate = () => {
         const result = data.orders.filter((date) =>
-        moment(date.order_date).format("YYYY-MM-DD") > startDate && moment(date.order_date).format("YYYY-MM-DD") <= endDate
-         )
-        if(result.length > 0){
+            moment(date.order_date).format("YYYY-MM-DD") > startDate && moment(date.order_date).format("YYYY-MM-DD") <= endDate
+        )
+        if (result.length > 0) {
             console.log("hereherehre")
             const countStatusPending = result.filter((item) => item.status === 'Pending')
             setCountPending(countStatusPending?.length)
@@ -73,19 +74,19 @@ const StatusChart =({ Date })=>{
 
     // useEffect(()=> {
     // },[])
-    
-    useEffect(()=> {
+
+    useEffect(() => {
         handleStatusCount()
-        HandleStatusByDate()    
-    },[Date])
+        HandleStatusByDate()
+    }, [Date])
 
-      
 
-        return (
-            <div id="chart">
-                <ReactApexChart options={statusData.options} series={countArray} type="donut" width="100%" />
-            </div>
-        );
+
+    return (
+        <div id="chart">
+            <ReactApexChart options={statusData.options} series={countArray} type="donut" height={500} width="100%" />
+        </div>
+    );
 }
 
 export default StatusChart;

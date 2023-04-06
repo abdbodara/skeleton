@@ -11,16 +11,10 @@ const ShippingChart = ({ Date }) => {
     const dateObject = moment(dateString, "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
     const formattedDate = dateObject.format("DD-MM-YYYY");
  
-
-
-
     const [countPending,setCountPending] = useState({'Exworks': 0})
     const [countCompleted,setCountCompleted] = useState({"EcoFriendly":0})
     const [countProcessing,setCountProcessing] = useState({"Express":0})
-
     const countArray = [countPending,countCompleted,countProcessing]
-    console.log("🚀 ~ namenamename", countArray)
-   
 
     const handleStatusCount = () => {
         const countStatusPending = data.orders.filter((item) => item.deliverymethod === 'Exworks')
@@ -47,8 +41,8 @@ const ShippingChart = ({ Date }) => {
         const result = data.orders.filter((date) =>
         moment(date.order_date).format("YYYY-MM-DD") > startDate && moment(date.order_date).format("YYYY-MM-DD") <= endDate
          )
-        console.log("🚀 ~ file: StatusChart.js:59 ~ HandleStatusByDate ~ result:", result)
-        if(result.length > 0){
+        
+         if(result.length > 0){
             const countStatusPending = result.filter((item) => item.deliverymethod === 'Exworks')
             let sumExworks = 0;
             countStatusPending.map((item)=> {
@@ -118,7 +112,7 @@ const ShippingChart = ({ Date }) => {
             },
             colors: ['#673AB7', '#00C853', '#2196F3'],
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr'],
+                categories: [""],
                 axisTicks: {
                     show: false
                 },
